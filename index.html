@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Khalid | Creative Technologist & 3D Interactive Portfolio</title>
+    <meta name="description" content="One-pager animated portfolio featuring a scroll-driven 3D interactive human figure, procedural audio, and ultra-smooth GSAP animations.">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
+    
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Ambient Visual Layers -->
+    <div class="ambient-bg"></div>
+    <div class="ambient-grid"></div>
+
+    <!-- Custom Cursor (Desktop) -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <!-- Fixed 3D Human Figure Canvas Container -->
+    <div id="character-canvas-container"></div>
+
+    <!-- Navigation Bar -->
+    <header class="navbar">
+        <div class="container nav-container">
+            <a href="#hero" class="brand-logo">
+                <span>KHALID</span>
+                <span class="logo-badge">DEV</span>
+            </a>
+
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#hero" class="nav-link active">Home</a></li>
+                    <li><a href="#about" class="nav-link">About</a></li>
+                    <li><a href="#skills" class="nav-link">Skills</a></li>
+                    <li><a href="#projects" class="nav-link">Projects</a></li>
+                    <li><a href="#timeline" class="nav-link">Journey</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+
+            <div class="nav-actions">
+                <button id="audio-toggle-btn" class="audio-toggle-btn" title="Toggle Synthesized Audio FX">
+                    <i data-lucide="volume-x"></i>
+                    <span class="audio-status">Muted</span>
+                </button>
+                <a href="#contact" class="btn btn-primary" style="padding: 9px 18px; font-size: 0.85rem;">Initiate</a>
+                <button class="mobile-menu-toggle" aria-label="Toggle Mobile Menu">
+                    <i data-lucide="menu"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- ==========================================
+             HERO SECTION
+             ========================================== -->
+        <section id="hero" class="hero-section">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-tag">
+                        <span class="neon-tag">
+                            <span class="pulsing-dot"></span>
+                            Available for Global Projects & Remote Roles
+                        </span>
+                    </div>
+
+                    <h1 class="hero-title">
+                        Crafting <span class="gradient-text">Future-Proof</span> Digital Realities
+                    </h1>
+
+                    <div class="typing-container">
+                        <span>I am a&nbsp;</span>
+                        <span id="typing-text"></span>
+                        <span class="typing-cursor"></span>
+                    </div>
+
+                    <p class="hero-description">
+                        Building next-generation web applications where clean architecture meets immersive 3D motion. Scroll down to experience the journey with my cyber avatar navigating through space and code.
+                    </p>
+
+                    <div class="hero-cta-group">
+                        <a href="#projects" class="btn btn-primary">
+                            <span>Explore Creations</span>
+                            <i data-lucide="arrow-right"></i>
+                        </a>
+                        <a href="#contact" class="btn btn-outline">
+                            <span>Get In Touch</span>
+                            <i data-lucide="message-square"></i>
+                        </a>
+                    </div>
+
+                    <div class="hero-scroll-indicator">
+                        <div class="scroll-wheel-icon"></div>
+                        <span>Scroll Down to Move Character</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================
+             ABOUT SECTION
+             ========================================== -->
+        <section id="about" class="section">
+            <div class="container">
+                <div class="section-header reveal-up">
+                    <div class="section-number">01 // IDENTITY & BACKGROUND</div>
+                    <h2 class="section-title">Bridging Code, Motion <span class="gradient-text">& Dimension</span></h2>
+                </div>
+
+                <div class="about-grid">
+                    <div class="about-card reveal-up">
+                        <div class="terminal-header">
+                            <span class="terminal-dot red"></span>
+                            <span class="terminal-dot yellow"></span>
+                            <span class="terminal-dot green"></span>
+                            <span class="terminal-title">khalid-terminal ~ v2.4.0</span>
+                        </div>
+                        <p class="about-text">
+                            Hello! I am Khalid, a creative frontend engineer with a deep passion for blending aesthetic web design with fluid WebGL motion graphics.
+                        </p>
+                        <p class="about-text">
+                            I don't just build static websites — I create interactive visual stories. Every scroll, transition, and micro-interaction is engineered to feel responsive, tactile, and alive.
+                        </p>
+                        <p class="about-text">
+                            With strong foundations in vanilla JavaScript, modern CSS architecture, and 3D mathematics, I deliver 60 FPS performance without bulky external frameworks.
+                        </p>
+
+                        <div class="about-stats">
+                            <div class="stat-item">
+                                <div class="stat-number" data-target="5" data-suffix="+">0</div>
+                                <div class="stat-label">Years of Craft</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number" data-target="45" data-suffix="+">0</div>
+                                <div class="stat-label">Projects Shipped</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number" data-target="99" data-suffix="%">0</div>
+                                <div class="stat-label">Satisfaction Rate</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Column (Spacious for 3D character pose inspection) -->
+                    <div class="about-visual-notes reveal-up" style="padding: 20px;">
+                        <div style="background: rgba(0, 242, 254, 0.05); border: 1px dashed rgba(0, 242, 254, 0.3); border-radius: 20px; padding: 30px;">
+                            <h3 style="margin-bottom: 15px; color: var(--primary-cyan);">Engineering Philosophy</h3>
+                            <ul style="list-style: none; display: flex; flex-direction: column; gap: 14px; color: var(--text-secondary);">
+                                <li style="display: flex; align-items: center; gap: 10px;">
+                                    <i data-lucide="check-circle" style="color: var(--primary-cyan); width: 18px;"></i>
+                                    <span>Zero Bloat: Pure vanilla performance and semantic DOM structure.</span>
+                                </li>
+                                <li style="display: flex; align-items: center; gap: 10px;">
+                                    <i data-lucide="check-circle" style="color: var(--primary-cyan); width: 18px;"></i>
+                                    <span>Interactive 3D: WebGL experiences that run smoothly across devices.</span>
+                                </li>
+                                <li style="display: flex; align-items: center; gap: 10px;">
+                                    <i data-lucide="check-circle" style="color: var(--primary-cyan); width: 18px;"></i>
+                                    <span>Accessibility First: Seamless keyboard navigation & contrast compliance.</span>
+                                </li>
+                                <li style="display: flex; align-items: center; gap: 10px;">
+                                    <i data-lucide="check-circle" style="color: var(--primary-cyan); width: 18px;"></i>
+                                    <span>Synthesized Audio: Procedural micro-sounds without heavy mp3 assets.</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================
+             SKILLS & ARSENAL SECTION
+             ========================================== -->
+        <section id="skills" class="section">
+            <div class="container">
+                <div class="section-header reveal-up">
+                    <div class="section-number">02 // TECH STACK & ARSENAL</div>
+                    <h2 class="section-title">Mastered Tools <span class="gradient-text">& Technologies</span></h2>
+                </div>
+
+                <div class="skills-grid">
+                    <!-- Category 1: Frontend Core -->
+                    <div class="skill-category-card reveal-up">
+                        <div class="skill-category-icon">
+                            <i data-lucide="code-2"></i>
+                        </div>
+                        <h3 class="skill-category-title">Core Frontend</h3>
+                        <div class="skill-list">
+                            <div class="skill-item">
+                                <div class="skill-item-info">
+                                    <span>HTML5 / Semantic Web</span>
+                                    <span>98%</span>
+                                </div>
+                                <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 98%;"></div></div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-item-info">
+                                    <span>Modern CSS / Animations</span>
+                                    <span>95%</span>
+                                </div>
+                                <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 95%;"></div></div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-item-info">
+                                    <span>JavaScript ESNext</span>
+                                    <span>94%</span>
+                                </div>
+                                <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 94%;"></div></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Category 2: 3D & Motion -->
+                    <div class="skill-category-card reveal-up">
+                        <div class="skill-category-icon">
+                            <i data-lucide="box"></i>
+                        </div>
+                        <h3 class="skill-category-title">3D & Motion</h3>
+                        <div class="skill-list">
+                            <div class="skill-item">
+                                <div class="skill-item-info">
+                                    <span>Three.js / WebGL</span>
+                                    <span>90%</span>
+                                </div>
+                                <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 90%;"></div></div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-item-info">
+                                    <span>GSAP & ScrollTrigger</span>
+                                    <span>96%</span>
+                                </div>
+                                <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 96%;"></div></div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-item-info">
+                                    <span>HTML5 Canvas 2D</span>
+                                    <span>88%</span>
+                                </div>
+                                <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 88%;"></div></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Category 3: UX & Audio -->
+                    <div class="skill-category-card reveal-up">
+                        <div class="skill-category-icon">
+                            <i data-lucide="headphones"></i>
+                        </div>
+                        <h3 class="skill-category-title">Sound & Experience</h3>
+                        <div class="skill-list">
+                            <div class="skill-item">
+                                <div class="skill-item-info">
+                                    <span>Web Audio API</span>
+                                    <span>86%</span>
+                                </div>
+                                <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 86%;"></div></div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-item-info">
+                                    <span>Responsive Architecture</span>
+                                    <span>98%</span>
+                                </div>
+                                <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 98%;"></div></div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-item-info">
+                                    <span>Performance Profiling</span>
+                                    <span>92%</span>
+                                </div>
+                                <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 92%;"></div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================
+             FEATURED PROJECTS SECTION
+             ========================================== -->
+        <section id="projects" class="section">
+            <div class="container">
+                <div class="section-header reveal-up">
+                    <div class="section-number">03 // SELECTED PORTFOLIO</div>
+                    <h2 class="section-title">Featured Works <span class="gradient-text">& Experiments</span></h2>
+                </div>
+
+                <div class="project-filters reveal-up">
+                    <button class="filter-btn active" data-filter="all">All Projects</button>
+                    <button class="filter-btn" data-filter="webgl">3D & WebGL</button>
+                    <button class="filter-btn" data-filter="interactive">Interactive Web</button>
+                    <button class="filter-btn" data-filter="creative">Creative UI</button>
+                </div>
+
+                <div class="projects-grid">
+                    <!-- Project 1 -->
+                    <div class="project-card reveal-up" data-category="webgl">
+                        <div class="project-preview">
+                            <div class="project-preview-mockup">
+                                <div class="terminal-header" style="padding-bottom: 8px; margin-bottom: 10px;">
+                                    <span class="terminal-dot red" style="width: 8px; height: 8px;"></span>
+                                    <span class="terminal-dot yellow" style="width: 8px; height: 8px;"></span>
+                                    <span class="terminal-dot green" style="width: 8px; height: 8px;"></span>
+                                </div>
+                                <div class="mockup-wireframe-lines">
+                                    <div class="mockup-line cyan"></div>
+                                    <div class="mockup-line long"></div>
+                                    <div class="mockup-line short"></div>
+                                </div>
+                                <div style="display: flex; justify-content: flex-end;">
+                                    <span style="font-family: var(--font-mono); font-size: 0.7rem; color: var(--primary-cyan);">3D ENGINE // 60 FPS</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-body">
+                            <div class="project-category">3D & WebGL Audio</div>
+                            <h3 class="project-title">Aetheria Spatial Audio</h3>
+                            <p class="project-summary">
+                                An interactive 3D spatial soundscape powered by Three.js and the Web Audio API. Users explore a virtual galaxy where audio frequencies alter geometries in real-time.
+                            </p>
+                            <div class="project-tags">
+                                <span class="tag">Three.js</span>
+                                <span class="tag">Web Audio</span>
+                                <span class="tag">GSAP</span>
+                                <span class="tag">GLSL</span>
+                            </div>
+                            <div class="project-actions">
+                                <button class="btn btn-outline view-project-btn" style="padding: 8px 16px; font-size: 0.85rem;">View Details</button>
+                                <a href="#contact" class="btn btn-primary" style="padding: 8px 16px; font-size: 0.85rem;">Live Demo</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 2 -->
+                    <div class="project-card reveal-up" data-category="interactive">
+                        <div class="project-preview" style="background: linear-gradient(135deg, #181224, #2b1b3d);">
+                            <div class="project-preview-mockup">
+                                <div class="terminal-header" style="padding-bottom: 8px; margin-bottom: 10px;">
+                                    <span class="terminal-dot red" style="width: 8px; height: 8px;"></span>
+                                    <span class="terminal-dot yellow" style="width: 8px; height: 8px;"></span>
+                                    <span class="terminal-dot green" style="width: 8px; height: 8px;"></span>
+                                </div>
+                                <div class="mockup-wireframe-lines">
+                                    <div class="mockup-line" style="background: var(--primary-magenta); width: 55%;"></div>
+                                    <div class="mockup-line long"></div>
+                                    <div class="mockup-line short"></div>
+                                </div>
+                                <div style="display: flex; justify-content: flex-end;">
+                                    <span style="font-family: var(--font-mono); font-size: 0.7rem; color: var(--primary-magenta);">CANVAS 2D // PIPELINE</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-body">
+                            <div class="project-category">Interactive Tool</div>
+                            <h3 class="project-title">OmniFlow Agent Graph</h3>
+                            <p class="project-summary">
+                                A high-performance node-based workflow editor built entirely with HTML5 Canvas and vanilla JS. Handles 1,000+ nodes with zero lag, fluid curves, and undo/redo history.
+                            </p>
+                            <div class="project-tags">
+                                <span class="tag">HTML5 Canvas</span>
+                                <span class="tag">Vanilla JS</span>
+                                <span class="tag">SVG</span>
+                                <span class="tag">State Engine</span>
+                            </div>
+                            <div class="project-actions">
+                                <button class="btn btn-outline view-project-btn" style="padding: 8px 16px; font-size: 0.85rem;">View Details</button>
+                                <a href="#contact" class="btn btn-primary" style="padding: 8px 16px; font-size: 0.85rem;">Live Demo</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 3 -->
+                    <div class="project-card reveal-up" data-category="creative">
+                        <div class="project-preview" style="background: linear-gradient(135deg, #0f1c19, #16332c);">
+                            <div class="project-preview-mockup">
+                                <div class="terminal-header" style="padding-bottom: 8px; margin-bottom: 10px;">
+                                    <span class="terminal-dot red" style="width: 8px; height: 8px;"></span>
+                                    <span class="terminal-dot yellow" style="width: 8px; height: 8px;"></span>
+                                    <span class="terminal-dot green" style="width: 8px; height: 8px;"></span>
+                                </div>
+                                <div class="mockup-wireframe-lines">
+                                    <div class="mockup-line" style="background: #00ff88; width: 65%;"></div>
+                                    <div class="mockup-line long"></div>
+                                    <div class="mockup-line short"></div>
+                                </div>
+                                <div style="display: flex; justify-content: flex-end;">
+                                    <span style="font-family: var(--font-mono); font-size: 0.7rem; color: #00ff88;">DATA VIZ // BIO-FEEDBACK</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-body">
+                            <div class="project-category">Creative UI & Shaders</div>
+                            <h3 class="project-title">NeuroPulse Bio-Interface</h3>
+                            <p class="project-summary">
+                                An ambient dashboard concept exploring futuristic medical telemetry. Uses custom SVG paths, smooth interpolation, and glassmorphic micro-charts for real-time telemetry.
+                            </p>
+                            <div class="project-tags">
+                                <span class="tag">Data Visualization</span>
+                                <span class="tag">CSS Grid</span>
+                                <span class="tag">GSAP Motion</span>
+                            </div>
+                            <div class="project-actions">
+                                <button class="btn btn-outline view-project-btn" style="padding: 8px 16px; font-size: 0.85rem;">View Details</button>
+                                <a href="#contact" class="btn btn-primary" style="padding: 8px 16px; font-size: 0.85rem;">Live Demo</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================
+             CAREER JOURNEY & TIMELINE SECTION
+             ========================================== -->
+        <section id="timeline" class="section">
+            <div class="container">
+                <div class="section-header reveal-up">
+                    <div class="section-number">04 // EXPERIENCE & MILESTONES</div>
+                    <h2 class="section-title">Career Path <span class="gradient-text">& Evolution</span></h2>
+                </div>
+
+                <div class="timeline-container">
+                    <!-- Item 1 -->
+                    <div class="timeline-item reveal-up">
+                        <div class="timeline-node"></div>
+                        <div class="timeline-card">
+                            <div class="timeline-date">2024 — PRESENT</div>
+                            <h3 class="timeline-role">Lead Creative Technologist</h3>
+                            <div class="timeline-company">Studio CyberCraft • Remote</div>
+                            <p class="timeline-desc">
+                                Spearheaded frontend engineering for interactive 3D web experiences, leading a squad of developers to deliver high-visibility marketing launches for global tech clients.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Item 2 -->
+                    <div class="timeline-item reveal-up">
+                        <div class="timeline-node"></div>
+                        <div class="timeline-card">
+                            <div class="timeline-date">2022 — 2024</div>
+                            <h3 class="timeline-role">Senior Frontend Developer</h3>
+                            <div class="timeline-company">Aether Labs • Singapore</div>
+                            <p class="timeline-desc">
+                                Architected component systems and WebGL microsites with sub-second load times. Improved Core Web Vitals to 99+ on lighthouse across all major client products.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Item 3 -->
+                    <div class="timeline-item reveal-up">
+                        <div class="timeline-node"></div>
+                        <div class="timeline-card">
+                            <div class="timeline-date">2020 — 2022</div>
+                            <h3 class="timeline-role">Interactive UI Engineer</h3>
+                            <div class="timeline-company">PixelCore Digital • Dhaka</div>
+                            <p class="timeline-desc">
+                                Developed custom interactive animations using GSAP and ScrollTrigger. Collaborated closely with 3D artists to integrate interactive vector and canvas assets into corporate web apps.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================
+             CONTACT SECTION
+             ========================================== -->
+        <section id="contact" class="section">
+            <div class="container">
+                <div class="section-header reveal-up">
+                    <div class="section-number">05 // INITIATE TRANSMISSION</div>
+                    <h2 class="section-title">Let's Build Something <span class="gradient-text">Extraordinary</span></h2>
+                </div>
+
+                <div class="contact-grid">
+                    <div class="contact-info-card reveal-up">
+                        <h3 style="font-size: 1.5rem; margin-bottom: 16px;">Have a project in mind?</h3>
+                        <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 24px;">
+                            Whether you need an interactive 3D landing page, a high-converting web app, or dynamic creative animations, I am always excited to discuss bold new visions.
+                        </p>
+
+                        <div class="contact-direct-links">
+                            <div class="contact-item" id="copy-email-btn" data-email="hello@khalid.dev" style="cursor: pointer;">
+                                <i data-lucide="mail" style="color: var(--primary-cyan);"></i>
+                                <span style="font-family: var(--font-mono);">hello@khalid.dev (Click to Copy)</span>
+                            </div>
+                            <a href="https://github.com" target="_blank" class="contact-item">
+                                <i data-lucide="github" style="color: var(--primary-cyan);"></i>
+                                <span>github.com/khalid-dev</span>
+                            </a>
+                            <a href="https://linkedin.com" target="_blank" class="contact-item">
+                                <i data-lucide="linkedin" style="color: var(--primary-cyan);"></i>
+                                <span>linkedin.com/in/khalid-dev</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="contact-form reveal-up">
+                        <form id="contact-form">
+                            <div class="form-group">
+                                <label for="name" class="form-label">Your Name</label>
+                                <input type="text" id="name" class="form-input" placeholder="e.g. Elena Rostova" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email" class="form-label">Email Address</label>
+                                <input type="email" id="email" class="form-input" placeholder="e.g. elena@company.com" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="message" class="form-label">Project Details</label>
+                                <textarea id="message" class="form-textarea" placeholder="Tell me about your vision, timeline, and goals..." required></textarea>
+                            </div>
+                            <button type="submit" id="submit-btn" class="btn btn-primary" style="width: 100%;">
+                                <span>Send Transmission</span>
+                                <i data-lucide="send"></i>
+                            </button>
+                            <div id="form-status" class="form-status"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ==========================================
+         INTERACTIVE 3D CHARACTER CONTROL DOCK
+         ========================================== -->
+    <aside class="character-dock" aria-label="3D Character Action Controls">
+        <span class="dock-label">Avatar</span>
+        <button class="stunt-btn" data-stunt="wave" title="Friendly Wave">Wave 👋</button>
+        <button class="stunt-btn" data-stunt="backflip" title="Acrobatic Backflip">Flip ⚡</button>
+        <button class="stunt-btn" data-stunt="float" title="Zero Gravity Levitation">Zero-G 🌌</button>
+        <button class="stunt-btn" data-stunt="dance" title="Groovy Dance">Dance 🕺</button>
+        
+        <div class="dock-colors">
+            <button class="theme-btn cyan active" data-theme="cyan" title="Cyan Cyber Suit"></button>
+            <button class="theme-btn magenta" data-theme="magenta" title="Neon Rose Suit"></button>
+            <button class="theme-btn emerald" data-theme="emerald" title="Matrix Emerald Suit"></button>
+            <button class="theme-btn gold" data-theme="gold" title="Solar Gold Suit"></button>
+        </div>
+    </aside>
+
+    <!-- Project Detail Modal -->
+    <div id="project-modal" class="modal" role="dialog" aria-modal="true">
+        <div class="modal-content">
+            <button id="modal-close-btn" class="modal-close" aria-label="Close Modal">&times;</button>
+            <div id="modal-category" class="project-category">Category</div>
+            <h2 id="modal-title" style="margin-bottom: 16px;">Project Title</h2>
+            <p id="modal-description" style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 24px;">Project Description</p>
+            <div id="modal-tags" class="project-tags"></div>
+            <div style="display: flex; gap: 14px; margin-top: 24px;">
+                <a href="#contact" id="modal-live-btn" class="btn btn-primary">Request Walkthrough</a>
+                <a href="#contact" id="modal-github-btn" class="btn btn-outline">Source Code</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-content">
+            <div class="footer-text">
+                © 2026 Khalid. Engineered with HTML5, CSS3, JavaScript, Three.js & GSAP. No React. 100% Vanilla.
+            </div>
+            <a href="#hero" class="btn btn-outline" style="padding: 8px 16px; font-size: 0.85rem;">
+                <span>Back to Top</span>
+                <i data-lucide="arrow-up"></i>
+            </a>
+        </div>
+    </footer>
+
+    <!-- ==========================================
+         LIBRARIES & SCRIPTS (CDN & Local)
+         ========================================== -->
+    <!-- Three.js (r128) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+    <!-- GSAP & ScrollTrigger -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Canvas Confetti for celebrations -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+
+    <!-- Local Application Logic -->
+    <script src="js/audio.js"></script>
+    <script src="js/character.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
